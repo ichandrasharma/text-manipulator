@@ -1,4 +1,4 @@
-# LIVE ->  https://ichandrasharma.github.io/textmanipulator/
+# LIVE ->  https://mytextmanipulator.000webhostapp.com/
 
 
 ## Built in React.js
