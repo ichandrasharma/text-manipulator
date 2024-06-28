@@ -1,10 +1,11 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Form from "./components/Form";
-// import About from "./components/About";
+import About from "./components/About";
 import React, { useState } from "react";
 import Alert from "./components/Alert";
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Github from "./components/Github";
 
 function App() {
   const [mode, setMode] = useState("light"); // dark mode enabled or not
@@ -18,10 +19,20 @@ function App() {
     });
     setTimeout(() => {
       setAlert(null);
-    }, 1000);
+    }, 1500);
   };
 
+  // const removeClass = () => {
+  //   document.body.classList.remove("bg-dark");
+  //   document.body.classList.remove("bg-light");
+  //   document.body.classList.remove("bg-danger");
+  //   document.body.classList.remove("bg-warning");
+  //   document.body.classList.remove("bg-success");
+  // }
+
   const toggleMode = () => {
+    // removeClass();
+    // document.body.classList.add("bg-" + cls);
     if (mode === "light") {
       setMode("dark");
       document.body.style.backgroundColor = "#52045c";
@@ -43,20 +54,20 @@ function App() {
 
   return (
     <>
-      {/* <Router> */}
+      <Router>
       <div>
         <Navbar title="TextManipulator" mode={mode} toggleMode={toggleMode} />
         <Alert alert={alert} />
-        <Form showsAlert={showsAlert} heading="Analyse Your Text" mode={mode} />
-        {/* <Routes>
+        <Routes>
           {/* partial matching
           user -> component 1
           user/home -> component 2 */}
-          {/* <Route exact path="/About" element={<About />} />
-          <Route exact path="/" element={<Form showsAlert={showsAlert} heading="Analyse Your Text" mode={mode} />} />
-        </Routes> */}
-      </div>
-    {/* </Router> */}
+          <Route exact path="/About" element={<About mode = {mode} />} />
+          <Route exact path="/" element={<Form showsAlert={showsAlert} heading="Analyse Your Text - Word Count, Uppercase to Lowercase, Lowercase to Uppercase, Remove or Delete Extra spaces" mode={mode} />} />
+        </Routes>
+        <Github />
+          </div>
+    </Router>
     </>
   );
 }
